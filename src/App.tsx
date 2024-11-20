@@ -1,26 +1,69 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Link, Routes, Route } from 'react-router-dom'; // Remove Router import
+import Upload from './pages/Upload.tsx';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">
+            PulmoScope
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarColor01"
+            aria-controls="navbarColor01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarColor01">
+            <ul className="navbar-nav me-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/upload">
+                  Upload
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/reports">
+                  Reports
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/about">
+                  About
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/contact">
+                  Contact Us/Support
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/upload" element={<Upload />} />
+        {/* Add other routes as needed */}
+      </Routes>
+    </>
   );
+}
+
+function Home() {
+  return <h2>Welcome to PulmoScope</h2>;
 }
 
 export default App;
